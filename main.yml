@@ -1,0 +1,24 @@
+---
+- name: Deploy and configure load balancer, Tomcat servers and PostgreSQL DBs
+  hosts: all
+  gather_facts: false # remove later! speeds up testing
+  become: true
+
+  tasks:
+  - name: Enable internal repositories
+    template:
+      src: ./open_three-tier-app.repo
+      dest: /etc/yum.repos.d/open_three-tier-app.repo
+      mode: 0644
+
+- name: Import playbook to deploy Tomcat server
+  import_playbook: deploy_tomcat.yml
+  tags: tomcat
+
+- name: Import playbook to deploy HAProxy
+  import_playbook: deploy_haproxy.yml
+  tags: haproxy
+
+- name: Import playbook to deploy PostgreSQL server
+  import_playbook: deploy_postgresql.yml
+  tags: postgresql

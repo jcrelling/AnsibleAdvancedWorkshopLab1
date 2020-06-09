@@ -1,0 +1,6 @@
+- name: Playook to deploy and configure PostgreSQL Server
+  gather_facts: false
+  become: true
+  hosts: appdbs
+  roles:
+    - role: geerlingguy.postgresql
