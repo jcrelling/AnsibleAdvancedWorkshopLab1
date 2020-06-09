@@ -5,7 +5,6 @@
   vars:
     - tomcat_root_directory: /usr/share/tomcat/webapps/ROOT
   tasks:
-    - name: Deploy and configure Tomcat server
     - block:
       - name: Deploy latest version of Tomcat server
         package:
