@@ -12,6 +12,8 @@
       mode: 0644
 
 - name: Import playbook to deploy the backend app
+  vars: 
+    backend_app: tomcat
   import_playbook: playbooks/deploy_{{ backend_app }}.yml
   tags: backend
 
