@@ -18,12 +18,12 @@
 
   - name: Import playbook to deploy the backend app
     import_playbook: playbooks/deploy_{{ backend_app }}.yml
-    tags: "{{ backend_app }}"
+    tags: backend
 
   - name: Import playbook to deploy the frontend app
     import_playbook: playbooks/deploy_{{ frontend_app }}.yml
-    tags: "{{ frontend_app }}"
+    tags: frontend
 
   - name: Import playbook to deploy the database
     import_playbook: playbooks/deploy_{{ database_app }}.yml
-    tags: "{{ database_app }}"
+    tags: database

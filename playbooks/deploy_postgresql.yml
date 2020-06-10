@@ -3,4 +3,4 @@
   become: true
   hosts: appdbs
   roles:
-    - role: geerlingguy.postgresql
+    - role: "../roles/geerlingguy.postgresql"
