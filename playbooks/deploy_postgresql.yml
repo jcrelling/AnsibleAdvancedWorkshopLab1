@@ -1,5 +1,5 @@
 - name: Playook to deploy and configure PostgreSQL Server
-  gather_facts: false
+  gather_facts: true
   become: true
   hosts: appdbs
   roles:
