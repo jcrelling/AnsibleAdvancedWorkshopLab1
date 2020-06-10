@@ -12,15 +12,13 @@
       mode: 0644
 
 - name: Import playbook to deploy the backend app
-  vars: 
-    backend_app: tomcat
-  import_playbook: playbooks/deploy_{{ backend_app }}.yml
+  import_playbook: playbooks/deploy_tomcat.yml
   tags: backend
 
 - name: Import playbook to deploy the frontend app
-  import_playbook: playbooks/deploy_{{ frontend_app }}.yml
+  import_playbook: playbooks/deploy_haproxy.yml
   tags: frontend
 
 - name: Import playbook to deploy the database
-  import_playbook: playbooks/deploy_{{ database_app }}.yml
+  import_playbook: playbooks/deploy_postgresql.yml
   tags: database
