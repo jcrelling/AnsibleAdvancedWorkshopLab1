@@ -1,25 +1,31 @@
-- name: Playbook to deply and configure latest version of Tomcat server
+- name: Playbook to deploy and configure Tomcat server
   hosts: apps
   gather_facts: false
   become: true
+ 
   vars:
     - tomcat_root_directory: /usr/share/tomcat/webapps/ROOT
+
   tasks:
+
     - name: Deploy latest version of Tomcat server
       package:
         name: tomcat
-        state: latest
+        state: present
       notify: enable_and_start_tomcat_service
+
     - name: Create the ROOT directory "{{ tomcat_root_directory }}"
       file:
         path: '{{ tomcat_root_directory }}'
         state: directory
+
     - name: Copy static index.html to ROOT directory "{{ tomcat_root_directory }}"
       template:
         src: templates/index.html.j2
         dest: '{{ tomcat_root_directory }}/index.html'
         mode: 0644
       notify: enable_and_start_tomcat_service
+
   handlers:
     - name: enable_and_start_tomcat_service
       service:

@@ -2,19 +2,27 @@
   hosts: frontends
   gather_facts: true # remove later! speeds up testing
   become: true
-
+  
+  vars:
+    packages_needed:
+      - httpie
+      - haproxy
+  
   tasks:
+  
     - name: Deploy latast version of HAProxy
-      yum:
-        name: haproxy
+      package:
+        name: "{{ packages_needed }}"
         state: latest
       notify: enable_and_start_haproxy_service 
+  
     - name: Coonfigure HAProxy
       template:
         src: templates/haproxy.cfg.j2
         dest: /etc/haproxy/haproxy.cfg
       notify: enable_and_start_haproxy_service 
-  handlers:
+  
+      handlers:
     - name: enable_and_start_haproxy_service
       service:
         name: haproxy
