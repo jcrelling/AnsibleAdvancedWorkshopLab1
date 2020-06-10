@@ -7,9 +7,9 @@
   tasks:
   - name: Enabled internal repositories
     copy:
-      src: files/open_three-tier-app.repo
+      src: ./files/open_three-tier-app.repo
       dest: /etc/yum.repos.d/open_three-tier-app.repo
-      mode: 0644
+      mode: '0644'
 
 - name: Import playbook to deploy the backend app
   import_playbook: playbooks/deploy_tomcat.yml
