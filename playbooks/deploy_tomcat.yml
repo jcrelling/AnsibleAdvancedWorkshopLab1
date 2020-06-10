@@ -8,7 +8,7 @@
 
   tasks:
 
-    - name: Deploy latest version of Tomcat server
+    - name: Deploy Tomcat server
       package:
         name: tomcat
         state: present

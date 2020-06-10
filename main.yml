@@ -6,7 +6,7 @@
 
   tasks:
   - name: Enabled internal repositories
-    template:
+    copy:
       src: files/open_three-tier-app.repo
       dest: /etc/yum.repos.d/open_three-tier-app.repo
       mode: 0644
