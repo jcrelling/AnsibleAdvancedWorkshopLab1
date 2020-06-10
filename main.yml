@@ -4,11 +4,6 @@
   gather_facts: false # remove later! speeds up testing
   become: true
 
-  vars:
-    backend_app: tomcat
-    frontend_app: haproxy
-    database_app: postgresql
-
   tasks:
   - name: Enabled internal repositories
     template:
