@@ -14,7 +14,12 @@
       package:
         name: "{{ packages_needed }}"
         state: latest
-      notify: enable_and_start_haproxy_service 
+    
+    - name: Start and enabled HAProxy service
+      service:
+          name: haproxy
+          state: started
+          enabled: yes
   
     - name: Configure HAProxy
       template:

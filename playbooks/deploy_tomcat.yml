@@ -12,7 +12,12 @@
       package:
         name: tomcat
         state: present
-      notify: enable_and_start_tomcat_service
+    
+    - name: Start and enabled Tomcat service
+      service:
+          name: tomcat
+          state: started
+          enabled: yes
 
     - name: Create the ROOT directory "{{ tomcat_root_directory }}"
       file:
