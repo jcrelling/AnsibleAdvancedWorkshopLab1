@@ -21,7 +21,7 @@
 
     - name: Copy static index.html to ROOT directory "{{ tomcat_root_directory }}"
       template:
-        src: templates/index.html.j2
+        src: ./templates/index.html.j2
         dest: '{{ tomcat_root_directory }}/index.html'
         mode: 0644
       notify: enable_and_start_tomcat_service
